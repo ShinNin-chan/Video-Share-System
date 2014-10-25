@@ -31,4 +31,4 @@ def video_play(request,video_id):
 
     video_path = Video.objects.filter(id=video_id)[0].file.file
 
-    return render_to_response('videoplay.html', {'video_path': video_path},context_instance=RequestContext(request))
+    return render_to_response('videoplay.html')

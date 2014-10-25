@@ -1,6 +1,22 @@
-<h1> Hello, xxx </h1>
+{% extends "banner_base.html" %}
 
-<p>search</p>
+{% block banner %}
+	<p>
+	{{page_owner.username}},{{page_owner.id}}
+	{% if flag ==  2 %} 
+	<form action = '' method = 'get'>
+		<input type = 'submit' value = 'Follow' />
+	</form>
+	{% elif flag == 1 %}
+		followed
+	{% endif %}
+	search
 
-<p> video 1
-	time comment rate </p>
+	
+		{% for video in videos %}
+			{{video.owner.username}} {{video.uploadtime}}
+			<br>{{video.title}}
+			<hr>
+		{% endfor %}
+	</p>
+{% endblock %}

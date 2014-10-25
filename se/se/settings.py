@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     "se",
     "userprofile",
     "video",
+    "friendpair",
 ]
 
 # A sample logging configuration. The only tangible logging

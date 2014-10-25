@@ -7,6 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 import se.views
 import video.views
+import friendpair.views
 
 
 urlpatterns = patterns("",
@@ -20,8 +21,12 @@ urlpatterns = patterns("",
 #    url(r"^timeLine/$"),
     url(r"^upload/$",video.views.upload),
     url(r"^upload/success/$",video.views.uploadSuccess),
+    url(r"^personalPage/$",se.views.personalPage, name="personalPage"),
+    url(r"^timeLine/$",se.views.timeLine,name="timeLine"),
+#    url(r"^upload/$"),
+#    url(r"^upload/$"),
 #    url(r"^video/(\d+)$"),
-#    url(r"friend-manage")
+    url(r"friend-manage",friendpair.views.friendManage, name="friend-manage")
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

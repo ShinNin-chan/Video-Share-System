@@ -14,7 +14,7 @@ urlpatterns = patterns("",
     url(r"^account/signup/$", se.views.SignupView.as_view(), name="account_signup"),
     url(r"^account/settings/$", se.views.SettingsView.as_view(), name="account_settings"),
     url(r"^account/", include("account.urls")),
-    url(r"^ratings/", include("agon_ratings.urls")),
+#    url(r"^ratings/", include("agon_ratings.urls")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

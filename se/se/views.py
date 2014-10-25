@@ -67,6 +67,11 @@ def personalPage(request,user_id = 0):
 
 
 def timeLine(request):
+    user = request.user
+    relationships = FriendPair.objects.filter(follower = user)
+    masters = [pair.master for pair in relationships]
+    videos = Video.objects.filter(owner__in=masters)
+    videos = sorted(videos,key=lambda v:v.uploadtime,reverse=True)
     return render_to_response('timeLine.html', locals())
 
 

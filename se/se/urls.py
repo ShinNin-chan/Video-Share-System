@@ -22,7 +22,7 @@ urlpatterns = patterns("",
     url(r"^upload/success/$",video.views.uploadSuccess),
     url(r"^homepage$",se.views.personalPage),
     url(r"^personalPage/(\d+)$",se.views.personalPage, name="personalPage"),
-    url(r"^timeLine/(\d+)$",se.views.timeLine,name="timeLine"),
+    url(r"^timeLine$",se.views.timeLine,name="timeLine"),
     url(r"^videoplay/(\d+)$",video.views.video_play),
     url(r"friend-manage",friendpair.views.friendManage, name="friend-manage")
 )

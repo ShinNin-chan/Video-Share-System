@@ -11,5 +11,6 @@ class UserProfile(models.Model):
     # Other fields here
     birthday = models.DateField(null=True)
     
+    
     def __unicode__(self):
         return unicode(self.user)

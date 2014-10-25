@@ -1,4 +1,5 @@
 import account.views
+from django.shortcuts import render_to_response
 
 import se.forms
 
@@ -35,4 +36,12 @@ class SettingsView(account.views.SettingsView):
         return initial
         
 def personalPage(request):
-    return
+
+    return render_to_response('personalPage.html', locals())
+
+def timeLine(request):
+    return render_to_response('timeLine.html', locals())
+
+
+
+

@@ -6,11 +6,14 @@ from video.form import UploadFileForm
 from video.models import VideoModel
 
 def upload(request):
+    raise "error"
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             video = VideoModel()
             video.file = request.FILES['file']
+            if not video:
+                raise "error"
             video.description = form.cleaned_data["description"]
             video.save()
             return HttpResponseRedirect('success/')

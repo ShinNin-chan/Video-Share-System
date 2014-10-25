@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class VideoModel(models.Model):
+class HomeworkContent(models.Model):
 #        homework = models.ForeignKey(Homework, related_name="content_homework")
 #        student = models.ForeignKey(User, related_name="content_student")
 #        grade = models.IntegerField(blank = True, default = -1)

@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 import se.views
+import video.views
 
 
 urlpatterns = patterns("",
@@ -17,8 +18,8 @@ urlpatterns = patterns("",
 #    url(r"^ratings/", include("agon_ratings.urls")),
     url(r"^personalPage/$",se.views.personalPage),
 #    url(r"^timeLine/$"),
-#    url(r"^upload/$"),
-#    url(r"^upload/$"),
+    url(r"^upload/$",video.views.upload),
+    url(r"^upload/success$",video.views.uploadSuccess),
 #    url(r"^video/(\d+)$"),
 #    url(r"friend-manage")
 )

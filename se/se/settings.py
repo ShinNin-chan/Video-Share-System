@@ -136,6 +136,7 @@ INSTALLED_APPS = [
     # project
     "se",
     "userprofile",
+    "video",
 ]
 
 # A sample logging configuration. The only tangible logging

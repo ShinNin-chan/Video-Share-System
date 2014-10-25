@@ -15,6 +15,12 @@ urlpatterns = patterns("",
     url(r"^account/settings/$", se.views.SettingsView.as_view(), name="account_settings"),
     url(r"^account/", include("account.urls")),
 #    url(r"^ratings/", include("agon_ratings.urls")),
+    url(r"^personalPage/$",se.views.personalPage),
+#    url(r"^timeLine/$"),
+#    url(r"^upload/$"),
+#    url(r"^upload/$"),
+#    url(r"^video/(\d+)$"),
+#    url(r"friend-manage")
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

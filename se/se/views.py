@@ -33,3 +33,6 @@ class SettingsView(account.views.SettingsView):
         initial = super(SettingsView, self).get_initial()
         initial['birthdate'] = self.request.user.userprofile.birthday
         return initial
+        
+def personalPage(request):
+    return

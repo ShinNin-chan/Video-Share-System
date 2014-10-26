@@ -1,0 +1,12 @@
+{% extends "banner_base.html" %}
+
+{% block banner %}
+
+{% for video in videos %}
+	{{video.title}}
+	{{video.owner}}
+	{{video.uploadtime}}
+	<br>
+{% endfor %}
+
+{% endblock %}

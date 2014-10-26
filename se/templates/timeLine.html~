@@ -2,7 +2,6 @@
 
 {% block banner %}
 
-<h3> <a href="/homepage">My Homepage.</a></h3>
 <h3> <a href="/timeline/all">All Videos.</a></h3>
 <h3> <a href="/timeline">Videos from friends.</a></h3>
 

@@ -12,6 +12,7 @@ import friendpair.views
 
 urlpatterns = patterns("",
     url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
+#    url(r"^$",se.views.personalPage,name='home'),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/signup/$", se.views.SignupView.as_view(), name="account_signup"),
     url(r"^account/settings/$", se.views.SettingsView.as_view(), name="account_settings"),
@@ -22,7 +23,9 @@ urlpatterns = patterns("",
     url(r"^upload/success/$",video.views.uploadSuccess),
     
     url(r"^videoplay/(\d+)$",video.views.video_play),
- 
+    url(r"^videoModify/(\d+)$",video.views.video_modify),
+    url(r"^videoDelete/(\d+)$",video.views.video_delete),
+    url(r"^videoShare/(\d+)$",video.views.video_share),
         
     url(r"^homepage$",se.views.personalPage),
     url(r"^personalPage/(\d+)$",se.views.personalPage, name="personalPage"),

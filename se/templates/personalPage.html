@@ -20,8 +20,8 @@
 	
 		{% for video in videos %}
 		<p>
-			<a href="personalPage/{{video.owner.id}}">{{video.owner.username}}</a> {{video.uploadtime}}
-			<br><a href="videoplay/{{video.id}}">{{video.title}}</a>
+			<a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a> {{video.uploadtime}}
+			<br><a href="/videoplay/{{video.id}}">{{video.title}}</a>
 			<hr>
 		</p>
 		{% endfor %}

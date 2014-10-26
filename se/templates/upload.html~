@@ -1,15 +1,27 @@
 {% extends "banner_base.html" %}
 
 {% block banner %}
-    <a>视频文件上传</a>
+    <a>视频文件{% if uploadFlag %}上传{% else %}修改{% endif %}</a>
      <form enctype="multipart/form-data" method="post" action="">
         {% csrf_token %}
         <table>
-         <tr><th><label for="id_title">title:</label></th><td><input id="id_title" maxlength="100"          name="title" type="text" /></td></tr>
-        <tr><th><label for="id_description">description:</label></th><td><input id="id_description" maxlength="1000"          name="description" type="text" /></td></tr>
-        <tr><th><label for="id_file">File:</label></th><td><input id="id_file" name="file" type="file" /></td></tr>
-       
+        <tr>
+            <th><label for="id_title">title:</label></th>
+            <td><input id="id_title" maxlength="100" name="title" type="text" value={{video_object.title}} /></td>
+            </tr>
+        <tr>
+            <th><label for="id_description">description:</label></th>
+            <td><input id="id_description" maxlength="1000" name="description" type="text" value={{video_object.description}}/></td>
+        </tr>
+        
+        {% if uploadFlag %}
+            <tr>
+                <th><label for="id_file">File:</label></th>
+                <td><input id="id_file" name="file" type="file" /></td>
+            </tr>
+        {% endif %}
         </table>
+        
         <input id="submit" type="submit" value="submit" />
       </form>
 {% endblock %}

@@ -5,7 +5,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-AUTH_PROFILE_MODULE = "userprofile.models.UserProfile"
+AUTH_PROFILE_MODULE = "userprofile.UserProfile"
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -128,7 +128,7 @@ INSTALLED_APPS = [
     "pinax_theme_bootstrap",
 
     # external
-    "agon_ratings",
+#    "agon_ratings",
     "account",
     "eventlog",
     "metron",

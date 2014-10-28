@@ -1,0 +1,22 @@
+{% extends "banner_base.html" %}
+
+{% block banner %}
+	<p>
+	{{page_owner.username}},{{page_owner.id}}
+	{% if flag ==  2 %} 
+	<form action = '' method = 'get'>
+		<input type = 'submit' value = 'Follow' />
+	</form>
+	{% elif flag == 1 %}
+		followed
+	{% endif %}
+	search
+
+	
+		{% for video in videos %}
+			{{video.owner.username}} {{video.uploadtime}}
+			<br>{{video.title}}
+			<hr>
+		{% endfor %}
+	</p>
+{% endblock %}

@@ -128,7 +128,7 @@ INSTALLED_APPS = [
     "pinax_theme_bootstrap",
 
     # external
-    "agon_ratings",
+#    "agon_ratings",
     "account",
     "eventlog",
     "metron",
@@ -136,6 +136,8 @@ INSTALLED_APPS = [
     # project
     "se",
     "userprofile",
+    "video",
+    "friendpair",
 ]
 
 # A sample logging configuration. The only tangible logging

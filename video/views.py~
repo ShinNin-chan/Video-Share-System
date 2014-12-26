@@ -90,6 +90,7 @@ def comment_video(request, video_id):
             #return HttpResponse(json.dumps({"name":str(comment.author.username), "date":str(comment.time), "content": str(comment.content)}))
             return HttpResponse(s)
 
+>>>>>>> f9cf895d61245e9dbead66e542dbc2b269b4c867
 
 def video_modify(request,video_id):
     modifyFlag = True

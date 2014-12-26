@@ -2,53 +2,30 @@
 
 {% block banner %}
 
-<h2>{{video_object.title}} 评级：{{points}}</h2><br/>
 
-<table>
-<<<<<<< HEAD
-    <tr>
-    <td>
-        <video width="640" height="480"  controls>
-          <source src="{{video_path}}" type="video/mp4">
-        </video>
-    </td>
+<h2>{{video_object.title}}</h2><br/>
 
-    <tr>
-        <td>上传者：{{video_object.owner.username}}<br/>
-        视频描述：{{video_object.description}}</td>
-    </tr>
-</table>
+<video width="640" height="480"  controls>
+<source src="{{video_path}}" type="video/mp4">
+</video>
+<p>上传者：{{video_object.owner.username}}</p>
+<p>视频描述：{{video_object.description}}</p>
 
-{% if own %} 
-    <a href="/videoModify/{{video_object.id}}">Edit</a> 
-=======
-    <td>
-        <tr>
-        <video width="640" height="480"  controls>
-          <source src="{{video_path}}" type="video/mp4">
-        </video>
-        <tr>
-        <tr></tr>
-    </td>
 
-    <td>
-        <tr>上传者：{{video_object.owner.username}}</tr>
-        <tr>视频描述：{{video_object.description}}</tr>
-    </td>
-</table>
+<p>  评级：<span id = "ratings">{{points}} </span></p>
 
 {% if own %} 
     <a href="/videoModify/{{video_object.id}}">EDit</a> <br/>
->>>>>>> 7b84a3bb182607085b59c4e720b9ab6d7bd2c576
     <a href="/videoDelete/{{video_object.id}}">Delete</a> <br/>
 {% else %}
     <a href="/videoShare/{{video_object.id}}">Share</a>
 {% endif %} 
 
-<br/><br/><br/>
-{% if not HasRated %}
-    <a>Rating</a>
-    <form enctype="multipart/form-data" method="post" action="">
+
+<br/>
+    <form id = "RatingForm" method="post" action="/videoplay/{{video_object.id}}/ratings">
+        <a>Rating</a><br/>
+
         {% csrf_token %}
         评级：
         <input type="radio" name="rate" value="1" /> 1
@@ -63,20 +40,28 @@
     <p> You have already rated! </p>
 {% endif %}
 
+
 <br/>
 <a>提交评论</a>
-<form enctype="multipart/form-data" method="post" action="">
+<form id = "CommentForm" method="post" action="/videoplay/{{video_object.id}}/comment">
     {% csrf_token %}
-    content:
     <textarea id="id_title" maxlength="1000"   name="content" type="text"> </textarea>
     <input name ="commentsubmit" id="commentsubmit" type="submit" value="评论" />
 </form>
 
 
+
+
+<div id = "Comment">
+
 {% for comment in commentList %}
+<p>
     {{comment.author.username}}
     {{comment.time}}
     {{comment.content}}
-    <br/><br/><br/>
+</p>
 {% endfor %}
+
+</div>
+
 {% endblock %}

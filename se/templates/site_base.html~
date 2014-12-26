@@ -33,7 +33,9 @@
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "pinax/js/theme.js" %}"></script>
 
+    {% block extra_script %}{% endblock %}
 
+        
 {% block extra_script %}
 <script src="{% static "js/video_rating.js" %}"></script>
 {% endblock %}

@@ -1,8 +1,12 @@
 {% load i18n %}
 {% load account_tags %}
 
+<a href="/homepage">Home</a>
+<a href="/timeline/all">Site Videos</a>
+<a href="/timeline">friend Videos</a>
 
 <ul class="nav navbar-nav pull-right">
+
     {% if request.user.is_authenticated %}
         <p class="navbar-text">
             <i class="fa fa-user"></i> {% user_display request.user %}

@@ -23,6 +23,8 @@ urlpatterns = patterns("",
     url(r"^upload/success/$",video.views.uploadSuccess),
     
     url(r"^videoplay/(\d+)$",video.views.video_play),
+    url(r"^videoplay/(\d+)/ratings$",video.views.rate_video),
+    url(r"^videoplay/(\d+)/comment$",video.views.comment_video),
     url(r"^videoModify/(\d+)$",video.views.video_modify),
     url(r"^videoDelete/(\d+)$",video.views.video_delete),
     url(r"^videoShare/(\d+)$",video.views.video_share),

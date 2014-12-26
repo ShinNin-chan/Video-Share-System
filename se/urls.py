@@ -13,11 +13,11 @@ import friendpair.views
 urlpatterns = patterns("",
     #url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
     url(r"^$",video.views.homepage_video_list, name="home"),
-#    url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
-
-    url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
-
-#    url(r"^$",se.views.personalPage,name='home'),
+    url(r"^homepage$",se.views.personalPage),
+    
+    
+    
+    
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/signup/$", se.views.SignupView.as_view(), name="account_signup"),
     url(r"^account/settings/$", se.views.SettingsView.as_view(), name="account_settings"),
@@ -35,8 +35,8 @@ urlpatterns = patterns("",
     url(r"^videoDelete/(\d+)$",video.views.video_delete),
     url(r"^videoShare/(\d+)$",video.views.video_share),
         
-    url(r"^homepage$",se.views.personalPage),
-    url(r"^personalPage/(\d+)$",se.views.personalPage, name="personalPage"),
+    
+    url(r"^personalPage/(\d+)$",se.views.personalPage, name="home"),
     
     url(r"^timeline$",se.views.timeline,name="timeLine"),
     url(r"^timeline/all$",se.views.timelineall,name="timeLine"),

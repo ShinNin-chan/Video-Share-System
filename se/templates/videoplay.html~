@@ -36,9 +36,7 @@
 
         <input name ="ratingsubmit" id="ratingsubmit" type="submit" value="评分" />
     </form>
-    {% else %}
-    <p> You have already rated! </p>
-{% endif %}
+
 
 
 <br/>

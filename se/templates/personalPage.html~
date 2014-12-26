@@ -1,29 +1,68 @@
 {% extends "banner_base.html" %}
 
+{% load i18n %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
 {% block banner %}
 
-<h3> <a href="/timeline/all">All Videos.</a></h3>
-<h3> <a href="/timeline">Videos from friends.</a></h3>
+    <h1>Welcome to VideoShare.com!</h1>
 
-	<p>
-	{{page_owner.username}},{{page_owner.id}}
-	{% if flag ==  2 %} 
-	<form action = '' method = 'get'>
-		<input type = 'submit' value = 'Follow' />
-	</form>
-	{% elif flag == 1 %}
-		followed
-	{% endif %}
-	search
-	</p>
-    <br/>
-	
-		{% for video in videos %}
-		<p>
-			<a href="personalPage/{{video.owner.id}}">{{video.owner.username}}</a> {{video.uploadtime}}
-			<br><a href="videoplay/{{video.id}}">{{video.title}}</a>
-			<hr>
-		</p>
-		{% endfor %}
-	
+    <h2>Latest Uploaded Videos</h2>
+    <p>
+
+
+
+    <table>
+    <tr>
+    {% for video in highscore %}
+        <td>
+            <table>
+            <tr>
+            <td>
+            <video width="160" height="120"  controls>
+              <source src="{{video.file.url}}" type="video/mp4">
+            </video>
+            </td>
+            </tr>
+            <tr><td><b>uploader：</b>{{video.owner.username}}</td></tr>
+            <tr><td><b>description：</b>{{video.description}}</td></tr>
+            </table>
+        </td>
+    {% endfor %}
+    </tr>
+    </table>
+
+
+
+    </p>
+
+    <h2>Highest Rated Videos</h2>
+    <p>
+
+    <table>
+    <tr>
+    {% for video in latest %}
+        <td>
+            <table>
+            <tr>
+            <td>
+            <video width="160" height="120"  controls>
+              <source src="{{video.file.url}}" type="video/mp4">
+            </video>
+            </td>
+            </tr>
+            <tr><td><b>uploader：</b>{{video.owner.username}}</td></tr>
+            <tr><td><b>description：</b>{{video.description}}</td></tr>
+            </table>
+        </td>
+    {% endfor %}
+    </tr>
+    </table>
+
+    </p>
+
+
 {% endblock %}

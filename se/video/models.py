@@ -12,3 +12,9 @@ class Video(models.Model):
     file = models.FileField(upload_to='file/%Y/%m/%d', blank=True,null=True)
 
 
+class Comment(models.Model):
+    author = models.ForeignKey(User)
+    video = models.ForeignKey(Video)
+    content = models.TextField()
+    time = models.DateTimeField(auto_now=True, auto_now_add=True)
+

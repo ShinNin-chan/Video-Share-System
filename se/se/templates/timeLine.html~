@@ -1,0 +1,17 @@
+{% extends "banner_base.html" %}
+
+{% block banner %}
+
+<h3> <a href="/homepage">My Homepage.</a></h3>
+<h3> <a href="/timeline/all">All Videos.</a></h3>
+<h3> <a href="/timeline">Videos from friends.</a></h3>
+
+
+{% for video in videos %}
+    <a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a> 
+    <br/>{{video.uploadtime}}
+	<br/><a href="/videoplay/{{video.id}}">{{video.title}}</a>
+	<br/>
+{% endfor %}
+
+{% endblock %}

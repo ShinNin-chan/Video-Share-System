@@ -4,6 +4,7 @@
         "model": "sites.site",
         "fields": {
             "domain": "localhost:8000",
+            "name": "videoshare.com [videoshare]"
             "name": "example.com [localhost]"
         }
     },

@@ -8,7 +8,7 @@
 
 {% block banner %}
 
-    <h1>Welcome to VideoShare.com!</h1>
+    <h1>Wese.views.personalPagelcome to VideoShare.com!</h1>
 
     <h2>Latest Uploaded Videos</h2>
     <p>

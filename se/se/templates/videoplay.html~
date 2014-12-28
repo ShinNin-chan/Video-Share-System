@@ -1,35 +1,62 @@
 {% extends "banner_base.html" %}
 
+{% load i18n %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
 {% block banner %}
 
-<h2>{{video_object.title}} 评级：{{points}}</h2><br/>
+<h2>{{video_object.title}}</h2><br/>
 
-<table>
-    <td>
-        <tr>
-        <video width="640" height="480"  controls>
-          <source src="{{video_path}}" type="video/mp4">
-        </video>
-        <tr>
-    </td>
+<video width="640" height="480"  controls>
+<source src="{{video_path}}" type="video/mp4">
+</video>
+<!-- JiaThis Button BEGIN -->
 
-    <td>
-        <tr>上传者：{{video_object.owner.username}}</tr>
-        <tr>视频描述：{{video_object.description}}</tr>
-    </td>
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<br/>
+<table class="table">
+<tr>
+<th>上传者</th>
+<th>视频描述</th>
+<th>评级</th>
+</tr>
+<tr>
+    <td>{{video_object.owner.username}}</td>
+    <td>{{video_object.description}}</td>
+    <td><span id = "ratings">{{points}} </span></p></td>
+
+</tr>
 </table>
 
-{% if own %} 
-    <a href="/videoModify/{{video_object.id}}">EDit</a> <br/>
-    <a href="/videoDelete/{{video_object.id}}">Delete</a> <br/>
-{% else %}
-    <a href="/videoShare/{{video_object.id}}">Share</a>
-{% endif %} 
+</p>
 
-<br/><br/><br/>
-{% if not HasRated %}
-    <a>Rating</a>
-    <form enctype="multipart/form-data" method="post" action="">
+
+<p>
+{% if own %} 
+    <a href="/videoModify/{{video_object.id}}" class="btn btn-default">Edit</a> 
+    <a href="/videoDelete/{{video_object.id}}" class="btn btn-default">Delete</a> <br/>
+{% else %}
+    <a href="/videoShare/{{video_object.id}}" class="btn btn-default">Share To Timeline</a>
+{% endif %} 
+</p>
+
+<br/>
+    <form id = "RatingForm" method="post" action="/videoplay/{{video_object.id}}/ratings">
+        <a>Rating</a><br/>
+
         {% csrf_token %}
         评级：
         <input type="radio" name="rate" value="1" /> 1
@@ -40,24 +67,36 @@
 
         <input name ="ratingsubmit" id="ratingsubmit" type="submit" value="评分" />
     </form>
-    {% else %}
-    <p> You have already rated! </p>
-{% endif %}
+
+
 
 <br/>
+
+
 <a>提交评论</a>
-<form enctype="multipart/form-data" method="post" action="">
+<form id = "CommentForm" method="post" action="/videoplay/{{video_object.id}}/comment">
     {% csrf_token %}
-    content:
     <textarea id="id_title" maxlength="1000"   name="content" type="text"> </textarea>
     <input name ="commentsubmit" id="commentsubmit" type="submit" value="评论" />
 </form>
 
 
+
+
+<div id = "Comment">
+<table class = table>
+
 {% for comment in commentList %}
-    {{comment.author.username}}
-    {{comment.time}}
-    {{comment.content}}
-    <br/><br/><br/>
+<tr class="active">
+    <td>{{comment.author.username}}</td>
+    <td>{{comment.time}}</td>
+</tr>
+<tr>
+   <td> {{comment.content}}</td>
+</tr>
 {% endfor %}
+
+</table>
+</div>
+
 {% endblock %}

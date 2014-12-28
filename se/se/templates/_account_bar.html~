@@ -1,14 +1,16 @@
 {% load i18n %}
 {% load account_tags %}
 
-{% load agon_ratings_tags %}
+<div class = "mybanner">
+<ul>
+<li><a href="/homepage" right-margin:20px>Home</a></li>
+<li><a href="/timeline/all">Site Videos</a></li>
+<li><a href="/timeline">Friend Videos</a></li>
+</div>
 
-
-{% user_rating request.user obj as the_user_rating %}
-
-<div class="user_rating">{{ the_user_rating }}</div>
 
 <ul class="nav navbar-nav pull-right">
+
     {% if request.user.is_authenticated %}
         <p class="navbar-text">
             <i class="fa fa-user"></i> {% user_display request.user %}

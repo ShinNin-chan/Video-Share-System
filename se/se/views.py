@@ -1,6 +1,7 @@
 import account.views
 from django.shortcuts import render_to_response
 from video.models import Video 
+from django.template import RequestContext 
 from django.contrib.auth.models import User
 from friendpair.models import FriendPair
 import se.forms
@@ -62,7 +63,7 @@ def personalPage(request,user_id = 0):
             pair.save()
     
 
-    return render_to_response('personalPage.html', locals())
+    return render_to_response('personalPage.html', locals(),context_instance=RequestContext(request))
 
 
 
@@ -72,9 +73,9 @@ def timeline(request):
     masters = [pair.master for pair in relationships]
     videos = Video.objects.filter(owner__in=masters)
     videos = sorted(videos,key=lambda v:v.uploadtime,reverse=True)
-    return render_to_response('timeLine.html', locals())
+    return render_to_response('timeLine.html', locals(),context_instance=RequestContext(request))
 
 def timelineall(request):
     videos = Video.objects.all()
-    return render_to_response('timeLine.html', locals())
+    return render_to_response('timeLine.html', locals(),context_instance=RequestContext(request))
 

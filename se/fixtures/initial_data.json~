@@ -4,6 +4,10 @@
         "model": "sites.site",
         "fields": {
             "domain": "localhost:8000",
+<<<<<<< HEAD
+            "name": "videoshare.com [videoshare]"
+=======
+>>>>>>> f9cf895d61245e9dbead66e542dbc2b269b4c867
             "name": "example.com [localhost]"
         }
     },
@@ -11,8 +15,8 @@
         "pk": 2,
         "model": "sites.site",
         "fields": {
-            "domain": "example.com",
-            "name": "example.com"
+            "domain": "videoshare.com",
+            "name": "VideoShare"
         }
     }
 ]

@@ -1,0 +1,70 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+
+<h2>{{video_object.title}}</h2><br/>
+
+<video width="640" height="480"  controls>
+<source src="{{video_path}}" type="video/mp4">
+</video>
+<p>上传者：{{video_object.owner.username}}</p>
+<p>视频描述：{{video_object.description}}</p>
+
+
+<p>  评级：<span id = "ratings">{{points}} </span></p>
+
+{% if own %} 
+    <a href="/videoModify/{{video_object.id}}">EDit</a> <br/>
+    <a href="/videoDelete/{{video_object.id}}">Delete</a> <br/>
+{% else %}
+    <a href="/videoShare/{{video_object.id}}">Share</a>
+{% endif %} 
+
+
+<br/>
+    <form id = "RatingForm" method="post" action="/videoplay/{{video_object.id}}/ratings">
+        <a>Rating</a><br/>
+
+        {% csrf_token %}
+        评级：
+        <input type="radio" name="rate" value="1" /> 1
+        <input type="radio" name="rate" value="2" /> 2
+        <input type="radio" name="rate" value="3" /> 3
+        <input type="radio" name="rate" value="4" /> 4
+        <input type="radio" name="rate" value="5" /> 5
+
+        <input name ="ratingsubmit" id="ratingsubmit" type="submit" value="评分" />
+    </form>
+
+
+
+<br/>
+<a>提交评论</a>
+<form id = "CommentForm" method="post" action="/videoplay/{{video_object.id}}/comment">
+    {% csrf_token %}
+    <textarea id="id_title" maxlength="1000"   name="content" type="text"> </textarea>
+    <input name ="commentsubmit" id="commentsubmit" type="submit" value="评论" />
+</form>
+
+
+
+
+<div id = "Comment">
+
+{% for comment in commentList %}
+<p>
+    {{comment.author.username}}
+    {{comment.time}}
+    {{comment.content}}
+</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}

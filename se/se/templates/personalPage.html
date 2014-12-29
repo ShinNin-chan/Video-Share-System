@@ -14,11 +14,16 @@
 	<p>
 	username: {{page_owner.username}}, uid: {{page_owner.id}}
 	{% if flag ==  2 %} 
-	<form action = '' method = 'get'>
-		<input type = 'submit' value = 'Follow' />
-	</form>
+	    <form action = '' method = 'POST'>
+	    {% csrf_token %}
+		    <input type = 'submit' value = 'Follow' />
+	    </form>
 	{% elif flag == 1 %}
-		followed
+		    followed
+	        <form action = '/personalPage/{{page_owner.id}}/unfollow' method = 'POST'>
+	            {% csrf_token %}
+		        <input type = 'submit' value = 'Unfollow' />
+	    </form>
 	{% endif %}
 	</p>
 	<h3>My videos</h3>

@@ -1,0 +1,37 @@
+{% extends "banner_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block banner %}
+
+<a href="/timeline/all" class="btn btn-default">All Videos</a>
+<a href="/timeline" class="btn btn-default">Videos from friends</a>
+</br>
+	<small>
+	username: {{page_owner.username}}, uid: {{page_owner.id}}
+	{% if flag ==  2 %} 
+	<form action = '' method = 'get'>
+		<input type = 'submit' value = 'Follow' />
+	</form>
+	{% elif flag == 1 %}
+		followed
+	{% endif %}
+	</small>
+	<h3>My videos</h3>
+	<table class="table">
+	    <th>Title</th>
+	    <th>User</th>
+	    <th>Time</th>
+		{% for video in videos %}
+		<tr>
+		    <td><a href="/videoplay/{{video.id}}">{{video.title}}</a></td>
+			<td><a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a></td>
+			<td>{{video.uploadtime}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

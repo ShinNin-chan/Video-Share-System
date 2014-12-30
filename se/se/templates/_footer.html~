@@ -1,8 +1,0 @@
-{% load i18n %}
-
-<<<<<<< HEAD
-{% trans "&copy; 2014 &lt;FDU copyright reserved&gt;" %}
-
-=======
-{% trans "&copy; 2014 &lt;your company here&gt;" %}
->>>>>>> f9cf895d61245e9dbead66e542dbc2b269b4c867

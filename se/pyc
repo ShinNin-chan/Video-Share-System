@@ -1,7 +1,0 @@
-se/dev.db: needs merge
-se/se/templates/videoplay.html: needs merge
-se/video/admin.pyc: needs merge
-se/video/form.pyc: needs merge
-se/video/models.pyc: needs merge
-se/video/views.py: needs merge
-se/video/views.pyc: needs merge

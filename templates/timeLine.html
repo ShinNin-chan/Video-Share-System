@@ -8,16 +8,27 @@
 
 {% block banner %}
 
-<h3> <a href="/homepage">My Homepage.</a></h3>
-<h3> <a href="/timeline/all">All Videos.</a></h3>
-<h3> <a href="/timeline">Videos from friends.</a></h3>
+<a href="/homepage" class="btn btn-default">My Homepage</a>
+<a href="/timeline/all" class="btn btn-default">All Videos</a>
+<a href="/timeline" class="btn btn-default">Videos from friends</a>
+<br />
+<br />
 
-
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>User</th>
+        <th>Time</th>
+    </tr>
+    
 {% for video in videos %}
-    <a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a> 
-    <br/>{{video.uploadtime}}
-	<br/><a href="/videoplay/{{video.id}}">{{video.title}}</a>
-	<br/><br/>
+
+    <tr>
+	    <td><a href="/videoplay/{{video.id}}">{{video.title}}</a></td>
+	    <td><a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a> </td>
+	    <td>{{video.uploadtime}}</td>
+	</tr>
 {% endfor %}
+</table>
 
 {% endblock %}

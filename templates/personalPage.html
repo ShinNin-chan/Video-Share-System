@@ -8,28 +8,35 @@
 
 {% block banner %}
 
-<h3> <a href="/timeline/all">All Videos.</a></h3>
-<h3> <a href="/timeline">Videos from friends.</a></h3>
-
+<a href="/timeline/all" class="btn btn-default">All Videos</a>
+<a href="/timeline" class="btn btn-default">Videos from friends</a>
+</br>
 	<p>
-	{{page_owner.username}},{{page_owner.id}}
+	username: {{page_owner.username}}, uid: {{page_owner.id}}
 	{% if flag ==  2 %} 
-	<form action = '' method = 'get'>
-		<input type = 'submit' value = 'Follow' />
-	</form>
+	    <form action = '' method = 'POST'>
+	    {% csrf_token %}
+		    <input type = 'submit' value = 'Follow' />
+	    </form>
 	{% elif flag == 1 %}
-		followed
+		    followed
+	        <form action = '/personalPage/{{page_owner.id}}/unfollow' method = 'POST'>
+	            {% csrf_token %}
+		        <input type = 'submit' value = 'Unfollow' />
+	    </form>
 	{% endif %}
-	search
 	</p>
-    <br/>
-	
+	<h3>My videos</h3>
+	<table class="table">
+	    <th>Title</th>
+	    <th>User</th>
+	    <th>Time</th>
 		{% for video in videos %}
-		<p>
-			<a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a> {{video.uploadtime}}
-			<br><a href="/videoplay/{{video.id}}">{{video.title}}</a>
-			<hr>
-		</p>
+		<tr>
+		    <td><a href="/videoplay/{{video.id}}">{{video.title}}</a></td>
+			<td><a href="/personalPage/{{video.owner.id}}">{{video.owner.username}}</a></td>
+			<td>{{video.uploadtime}}</td>
+		</tr>
 		{% endfor %}
-	
+	</table>
 {% endblock %}

@@ -37,6 +37,7 @@ urlpatterns = patterns("",
         
     
     url(r"^personalPage/(\d+)$",se.views.personalPage, name="home"),
+    url(r"^personalPage/(\d+)/unfollow$",se.views.personalPageUnfollow),
     
     url(r"^timeline$",se.views.timeline,name="timeLine"),
     url(r"^timeline/all$",se.views.timelineall,name="timeLine"),

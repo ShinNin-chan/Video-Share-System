@@ -4,6 +4,7 @@ from video.models import Video
 from django.template import RequestContext 
 from django.contrib.auth.models import User
 from friendpair.models import FriendPair
+from django.http import HttpResponseRedirect, HttpResponse
 import se.forms
 
 
@@ -40,7 +41,6 @@ class SettingsView(account.views.SettingsView):
         
 
 def personalPage(request,user_id = 0):
-
     
     if user_id == 0 or int(user_id) == request.user.id:
         page_owner = request.user
@@ -55,16 +55,27 @@ def personalPage(request,user_id = 0):
 
     videos = Video.objects.filter(owner=page_owner)
 
-    if request.method == 'GET':
+    if request.method == 'POST':
         pair = FriendPair()
         pair.follower = request.user
         pair.master = page_owner
         if FriendPair.objects.filter(follower = request.user, master = page_owner).count() == 0:
             pair.save()
-    
+        return HttpResponseRedirect('/personalPage/{}'.format(user_id))
 
     return render_to_response('personalPage.html', locals(),context_instance=RequestContext(request))
 
+def personalPageUnfollow(request,user_id=0):
+    if request.method == 'POST':
+        if user_id == 0 or int(user_id) == request.user.id:
+            page_owner = request.user
+            flag = 0     # This is my own homepage
+        else:
+            page_owner = User.objects.get(id = int(user_id))
+        pair = FriendPair.objects.filter(follower = request.user, master = page_owner)[0]
+        pair.delete()
+    return HttpResponseRedirect('/personalPage/{}'.format(user_id))
+    
 
 
 def timeline(request):
